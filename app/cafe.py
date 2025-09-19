@@ -12,7 +12,6 @@ class Cafe:
         self.name = name
 
     def visit_cafe(self, visitor: dict) -> str:
-        # Check vaccine key
         if "vaccine" not in visitor:
             raise NotVaccinatedError("Visitor is not vaccinated")
 
@@ -25,7 +24,7 @@ class Cafe:
         ):
             raise OutdatedVaccineError("Vaccine is outdated or invalid")
 
-        if not visitor.get("wearing_a_mask"):
+        if "wearing_a_mask" in visitor and not visitor.get("wearing_a_mask"):
             raise NotWearingMaskError("Visitor is not wearing a mask")
 
         return f"Welcome to {self.name}"
